@@ -45,23 +45,13 @@ class DFF(nn.Module):
                                    nn.ConvTranspose2d(nclass, nclass, 16, stride=8, padding=4, bias=False))
         self.chatten = cSE(nclass)
 
-        # self.side5_w = nn.Sequential(nn.Conv2d(2048, nclass * 4, 1, bias=True),
-        #                              norm_layer(nclass * 4),
-        #                              nn.ConvTranspose2d(nclass * 4, nclass * 4, 16, stride=8, padding=4, bias=False))
-        # self.conv_result = nn.Sequential(nn.Conv2d(24, nclass, 1, bias=True),
-        #                            norm_layer(nclass),
-        #                            nn.ConvTranspose2d(nclass, nclass, 16, stride=8, padding=4, bias=False))
-        # self.conv_result = nn.Conv2d(24, nclass, 1, bias=True)
-
     def forward(self, c1, c2, c3, c5):
         # c1, c2, c3, c4, c5 = self.base_forward(x)
         side1 = self.side1(c1)  # (N, 1, H, W)
         side2 = self.side2(c2)  # (N, 1, H, W)
         side3 = self.side3(c3)  # (N, 1, H, W)
         side5 = self.side5(c5)  # (N, NUM_CLASS, H, W)
-        # side5_w = self.side5_w(c5)  # (N, NUM_CLASS*4, H, W)
 
-        # ada_weights = self.ada_learner(side5_w)  # (N, NUM_CLASS, 4, H, W)
 
         slice5 = side5[:, 0:1, :, :]  # (N, 1, H, W)
         fuse = torch.cat((slice5, side1, side2, side3), 1)
@@ -70,9 +60,6 @@ class DFF(nn.Module):
             fuse = torch.cat((fuse, slice5, side1, side2, side3), 1)  # (N, NUM_CLASS*4, H, W)
 
         fuse = fuse.view(fuse.size(0), self.nclass, -1, fuse.size(2), fuse.size(3))  # (N, NUM_CLASS, 4, H, W)
-        # fuse = self.chatten(fuse)
-        # fuse = self.conv_result(fuse)
-        # fuse = torch.mul(fuse, ada_weights)  # (N, NUM_CLASS, 4, H, W)
         fuse = torch.sum(fuse, 2)  # (N, NUM_CLASS, H, W)
         side5 = self.chatten(side5)
 

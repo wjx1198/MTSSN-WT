@@ -1,7 +1,4 @@
 % --------------------------------------------------------
-% Copyright (c) Yuan Hu
-% Licensed under The MIT License [see LICENSE for details]
-%
 % Intro:
 % This script is used to:
 % 1. Generate instance-sensitive multi-label semantic edges on the Cityscapes dataset

@@ -1,2 +1,2 @@
 # MTSSN-WT
-Multi-Task Learning for Pavement DiseaseSegmentation Using Wavelet Transform
+Multi-Task Learning for Pavement Disease Segmentation Using Wavelet Transform

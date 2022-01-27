@@ -1,8 +1,3 @@
-###########################################################################
-# Created by: Yuan Hu
-# Email: huyuan@radi.ac.cn
-# Copyright (c) 2019
-###########################################################################
 from __future__ import division
 import torch
 import torch.nn as nn

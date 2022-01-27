@@ -17,8 +17,8 @@ addpath(path);
 %% 
 
 %% Setup Directories and Suffixes
-dataRoot = 'F:/DFF-master'; %'../data_orig';
-genDataRoot = 'F:/DFF-master/edge_proc'; % debug
+dataRoot = 'path'; %'../data_orig';
+genDataRoot = 'path_edge'; % debug
 suffixImage = '_label_edge.png';
 
 %% Setup Parameters

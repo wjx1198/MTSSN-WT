@@ -57,7 +57,6 @@ def compute_F_Score_e(pred, label, num_classes, resize_height, resize_width, nTo
                         nVal_Neigh = matLabelData_optr[nCol_Neigh, nRow_Neigh]
                         if nVal_NetOutput == nVal_Neigh:
                             bIsNeighCorrect = True
-                        # if bIsNeighCorrect = True 可打破循环出去
 
                 if bIsNeighCorrect:
                     # 若周围邻域内找到了该标签，那么它是truePos
@@ -141,26 +140,6 @@ def compute_F_Score(tpos_list, fpos_list, fneg_list, num_classes):
                   " , Recall: %.7f" % (recall_allImgs[n] * 100.0), " , F1: %.7f" % (fscore_allImgs[n] * 100.0))
         else:
             continue
-
-    # -- Compute PR-Curve for Each Image
-    #
-    # Recall = True_Pos / (True_Pos + False_Neg)
-    # Precision = True_Pos / (True_Pos + False_Pos)
-    # F = 2 * Recall * Precision / (Recall + Precision)
-    #
-    # for i_class in range(nNumOfDistess):
-    #     recall_currImg[i_class] = truePos_currImg[i_class] / (
-    #                 truePos_currImg[i_class] + falseNeg_currImg[i_class] + fSmallDivHelper)
-    #     precision_currImg[i_class] = truePos_currImg[i_class] / (
-    #                 truePos_currImg[i_class] + falsePos_currImg[i_class] + fSmallDivHelper)
-    #     fscore_currImg[i_class] = 2 * recall_currImg[i_class] * precision_currImg[i_class] / (
-    #                 recall_currImg[i_class] + precision_currImg[i_class] + fSmallDivHelper)
-    #     strDistName = my_label_switcher_APD.get(i_class, "Unknown Item")
-    #     print("File: ", img_name, " , Dist: ", strDistName,
-    #           " , Precision: %.2f" % (precision_currImg[i_class] * 100),
-    #           " , Recall: %.2f" % (recall_currImg[i_class] * 100), " , F1: %.2f " % (fscore_currImg[i_class] * 100))
-
-    # end of for i in range(0, len(listImages)):
 
     # -- Compute Mirco F1 ----------------------------------------------------------------------------------------------
     print("\n")

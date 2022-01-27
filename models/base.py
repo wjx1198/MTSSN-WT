@@ -1,9 +1,3 @@
-###########################################################################
-# Created by: Yuan Hu
-# Email: huyuan@radi.ac.cn
-# Copyright (c) 2019
-###########################################################################
-
 import torch.nn as nn
 
 from models import resnet

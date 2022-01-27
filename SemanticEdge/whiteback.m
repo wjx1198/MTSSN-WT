@@ -1,6 +1,6 @@
 %% Setup Directories and Suffixes
-dataRoot = '路径'; %'../data_orig';
-genDataRoot = '路径'; % debug
+dataRoot = 'path'; %'../data_orig';
+genDataRoot = 'path_edge'; % debug
 suffixImage = '_label_edge.png';
 
 setList = {'train', 'test'};

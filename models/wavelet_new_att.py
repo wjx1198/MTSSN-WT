@@ -21,7 +21,7 @@ class sSE(nn.Module):
     def forward(self, U):
         q = self.Conv1x1(U)  # U:[bs,c,h,w] to q:[bs,1,h,w]
         q = self.norm(q)
-        return U * q  # 广播机制
+        return U * q 
 
 
 class cSE(nn.Module):

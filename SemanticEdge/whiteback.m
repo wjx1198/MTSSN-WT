@@ -1,6 +1,6 @@
 %% Setup Directories and Suffixes
-dataRoot = 'F:/DFF-master'; %'../data_orig';
-genDataRoot = 'F:/DFF-master/edge_proc'; % debug
+dataRoot = '路径'; %'../data_orig';
+genDataRoot = '路径'; % debug
 suffixImage = '_label_edge.png';
 
 setList = {'train', 'test'};

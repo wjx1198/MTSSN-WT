@@ -21,12 +21,6 @@ class SoftIoULoss(nn.Module):
         super(SoftIoULoss, self).__init__()
         self.n_classes = n_classes
 
-    # @staticmethod
-    # def to_one_hot(tensor, n_classes):
-    #     n, h, w = tensor.size()
-    #     one_hot = torch.zeros(n, n_classes, h, w).scatter_(1, tensor.view(n, 1, h, w), 1)
-    #     return one_hot
-
     def forward(self, input, target):
         # logit => N x Classes x H x W
         # target => N x H x W
@@ -50,42 +44,27 @@ class SoftIoULoss(nn.Module):
 def prepare_data(dataset_dir):
     train_input_names = []
     train_output_names = []
-    # train_edge_names = []
+
     val_input_names = []
     val_output_names = []
-    # val_edge_names = []
+
     test_input_names = []
     test_output_names = []
-    # test_edge_names = []
+
     for file in os.listdir(dataset_dir + "/train"):
-        # cwd = os.getcwd()
         train_input_names.append(dataset_dir + "/train/" + file)
     for file in os.listdir(dataset_dir + "/train_labels"):
-        # cwd = os.getcwd()
         train_output_names.append(dataset_dir + "/train_labels/" + file)
-    # for file in os.listdir(dataset_dir + "/train_edge_labels"):
-    #     # cwd = os.getcwd()
-    #     train_edge_names.append(dataset_dir + "/train_edge_labels/" + file)
     for file in os.listdir(dataset_dir + "/val"):
-        # cwd = os.getcwd()
         val_input_names.append(dataset_dir + "/val/" + file)
     for file in os.listdir(dataset_dir + "/val_labels"):
         # cwd = os.getcwd()
         val_output_names.append(dataset_dir + "/val_labels/" + file)
-    # for file in os.listdir(dataset_dir + "/val_edge_labels"):
-    #     # cwd = os.getcwd()
-    #     val_edge_names.append(dataset_dir + "/val_edge_labels/" + file)
     for file in os.listdir(dataset_dir + "/test"):
-        # cwd = os.getcwd()
         test_input_names.append(dataset_dir + "/test/" + file)
     for file in os.listdir(dataset_dir + "/test_labels"):
         # cwd = os.getcwd()
         test_output_names.append(dataset_dir + "/test_labels/" + file)
-    # for file in os.listdir(dataset_dir + "/test_edge_labels"):
-    #     # cwd = os.getcwd()
-    #     test_edge_names.append(dataset_dir + "/test_edge_labels/" + file)
-    # train_input_names.sort(), train_output_names.sort(), val_input_names.sort(), val_output_names.sort(), test_input_names.sort(), test_output_names.sort(), train_edge_names.sort(), val_edge_names.sort(), test_edge_names.sort(),
-    # return train_input_names, train_output_names, val_input_names, val_output_names, test_input_names, test_output_names, train_edge_names, val_edge_names, test_edge_names
     train_input_names.sort(), train_output_names.sort(), val_input_names.sort(), val_output_names.sort(), test_input_names.sort(), test_output_names.sort()
     return train_input_names, train_output_names, val_input_names, val_output_names, test_input_names, test_output_names
 

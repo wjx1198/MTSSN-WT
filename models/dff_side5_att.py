@@ -88,26 +88,6 @@ class LocationAdaptiveLearner(nn.Module):
 
 
 class DFF_ori(BaseNet):
-    r"""Dynamic Feature Fusion for Semantic Edge Detection
-
-    Parameters
-    ----------
-    nclass : int
-        Number of categories for the training dataset.
-    backbone : string
-        Pre-trained dilated backbone network type (default:'resnet50'; 'resnet50',
-        'resnet101' or 'resnet152').
-    norm_layer : object
-        Normalization layer used in backbone network (default: :class:`mxnet.gluon.nn.BatchNorm`;
-
-
-    Reference:
-
-        Yuan Hu, Yunpeng Chen, Xiang Li, Jiashi Feng. "Dynamic Feature Fusion
-        for Semantic Edge Detection" *IJCAI*, 2019
-
-    """
-
     def __init__(self, nclass, backbone, norm_layer=nn.BatchNorm2d, **kwargs):
         super(DFF_ori, self).__init__(nclass, backbone, norm_layer=norm_layer, **kwargs)
         self.nclass = nclass
